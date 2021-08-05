@@ -1,0 +1,25 @@
+{
+    "name": "browser-extension-template",
+    "description": "todo",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "node build-scripts watch",
+        "start:reload": "node build-scripts watch reload",
+        "build": "node build-scripts minify",
+        "submission": "node build-scripts/submission",
+        "presubmission": "npm run build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "chokidar": "^3.5.2",
+        "esbuild": "^0.12.16",
+        "fs-extra": "^10.0.0",
+        "jszip": "^3.7.0",
+        "prettier": "^2.3.2"
+    },
+    "dependencies": {
+        "webextension-polyfill": "^0.8.0"
+    }
+}

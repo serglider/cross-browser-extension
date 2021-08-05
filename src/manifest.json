@@ -1,0 +1,32 @@
+{
+    "name": "cross-browser-extension",
+    "description": "Cross-browser extension template",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "permissions": ["tabs"],
+    "icons": {
+        "16": "assets/icon-16.png",
+        "48": "assets/icon-48.png",
+        "128": "assets/icon-128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["scripts/content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_icon": {
+            "16": "assets/icon-16.png",
+            "24": "assets/icon-16.png",
+            "32": "assets/icon-48.png"
+        },
+        "default_popup": "views/popup.html",
+        "default_title": "browser-extension-template"
+    },
+    "options_page": "views/options.html",
+    "background": {
+        "scripts": ["scripts/background.js"],
+        "persistent": false
+    }
+}
