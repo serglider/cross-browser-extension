@@ -1,13 +1,14 @@
 {
-    "name": "browser-extension-template",
-    "description": "todo",
+    "name": "cross-browser-extension",
+    "description": "Cross-browser extension template",
     "version": "0.1.0",
     "scripts": {
         "start": "node build-scripts watch",
         "start:reload": "node build-scripts watch reload",
         "build": "node build-scripts minify",
         "submission": "node build-scripts/submission",
-        "presubmission": "npm run build"
+        "presubmission": "npm run build",
+        "start:firefox": "cd \"dist\" && web-ext lint"
     },
     "keywords": [],
     "author": "",
@@ -17,7 +18,8 @@
         "esbuild": "^0.12.16",
         "fs-extra": "^10.0.0",
         "jszip": "^3.7.0",
-        "prettier": "^2.3.2"
+        "prettier": "^2.3.2",
+        "web-ext": "^6.2.0"
     },
     "dependencies": {
         "webextension-polyfill": "^0.8.0"
