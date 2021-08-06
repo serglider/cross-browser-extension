@@ -23,7 +23,10 @@
             "32": "assets/icon-32.png"
         }
     },
-    "options_page": "views/options.html",
+    "options_ui": {
+        "page": "views/options.html",
+        "open_in_tab": true
+    },
     "background": {
         "scripts": ["scripts/background.js"],
         "persistent": false

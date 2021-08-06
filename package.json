@@ -8,7 +8,7 @@
         "build": "node build-scripts minify",
         "submission": "node build-scripts/submission",
         "presubmission": "npm run build",
-        "start:firefox": "cd \"dist\" && web-ext lint"
+        "start:firefox": "cd \"dist\" && web-ext run"
     },
     "keywords": [],
     "author": "",
