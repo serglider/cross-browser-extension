@@ -3,7 +3,7 @@
     "description": "Cross-browser extension template",
     "version": "0.1.0",
     "manifest_version": 2,
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "storage"],
     "icons": {
         "16": "assets/icon-16.png",
         "32": "assets/icon-32.png",
@@ -21,9 +21,7 @@
             "16": "assets/icon-16.png",
             "24": "assets/icon-24.png",
             "32": "assets/icon-32.png"
-        },
-        "default_popup": "views/popup.html",
-        "default_title": "cross-browser-extension"
+        }
     },
     "options_page": "views/options.html",
     "background": {

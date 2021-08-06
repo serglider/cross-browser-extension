@@ -1,5 +1,55 @@
-html,
+@font-face {
+    font-family: system;
+    font-style: normal;
+    font-weight: 300;
+    src: local('.SFNSText-Light'), local('.HelveticaNeueDeskInterface-Light'),
+        local('.LucidaGrandeUI'), local('Ubuntu Light'), local('Segoe UI Light'),
+        local('Roboto-Light'), local('DroidSans'), local('Tahoma');
+}
+
 body {
-    padding: 0;
-    margin: 0;
+    font-family: 'system', sans-serif;
+}
+
+input {
+    width: 300px;
+    padding: 5px;
+}
+
+button {
+    font-family: 'system', sans-serif;
+    font-weight: bolder;
+    padding: 7px;
+    border: none;
+    cursor: pointer;
+    background: #2196f3;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.95;
+}
+
+button:disabled {
+    background: grey;
+    cursor: default;
+}
+
+button:disabled:hover {
+    opacity: 1;
+}
+
+.text {
+    margin: 18px 0;
+}
+
+.text span {
+    font-size: 120%;
+    padding: 6px;
+    background: grey;
+    color: white;
+}
+
+.delete{
+    cursor: pointer;
 }
