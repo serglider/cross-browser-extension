@@ -1,9 +1,34 @@
-## TODO:
+## Cross-browser extension template
 
-- cross-browser stuff
-- submissions
-- readme
+#### It's WIP currently
 
-https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension
+### Introduction
+A set of build scripts facilitating cross-browser extension development plus dummy sample extension.
 
-https://github.com/fregante/browser-extension-template
+### Before you begin
+TODO
+
+https://gs.statcounter.com/browser-market-share/desktop/worldwide/#monthly-202007-202107
+
+### Getting started
+use template button
+clone
+install
+
+### Development
+TODO
+
+### Single target
+TODO
+
+### Distribution
+TODO
+
+### Roadmap
+TODO
+
+### Licence
+TODO
+
+
+
