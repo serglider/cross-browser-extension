@@ -5,16 +5,8 @@ module.exports = function adjustManifest(sourceDir, destDir, isDevMode, reload) 
     if (!isDevMode) {
         return Promise.resolve();
     }
-    const manifestSourcePath = path.resolve(
-        process.cwd(),
-        sourceDir,
-        'manifest.json'
-    );
-    const manifestDestPath = path.resolve(
-        process.cwd(),
-        destDir,
-        'manifest.json'
-    );
+    const manifestSourcePath = path.resolve(process.cwd(), sourceDir, 'manifest.json');
+    const manifestDestPath = path.resolve(process.cwd(), destDir, 'manifest.json');
     return readFile(manifestSourcePath, 'utf8').then((content) => {
         const manifest = JSON.parse(content);
         manifest.version = handleVersion(manifest.version);
@@ -29,7 +21,11 @@ module.exports = function adjustManifest(sourceDir, destDir, isDevMode, reload) 
 function handleVersion(current) {
     handleVersion.runs = handleVersion.runs || 0;
     const digits = current.split('.');
-    digits.push(handleVersion.runs);
+    if (digits.length === 4) {
+        digits[3] = handleVersion.runs;
+    } else {
+        digits.push(handleVersion.runs);
+    }
     handleVersion.runs++;
     return digits.join('.');
 }
