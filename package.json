@@ -7,6 +7,11 @@
         "name": "Sergey Chernykh",
         "email": "s-chernykh@outlook.com"
     },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/serglider/cross-browser-extension.git"
+    },
     "scripts": {
         "start": "node build-scripts watch",
         "start:reload": "node build-scripts watch reload",
@@ -17,7 +22,6 @@
         "preartifacts": "npm run build",
         "start:firefox": "web-ext run"
     },
-    "license": "MIT",
     "devDependencies": {
         "archiver": "^5.3.0",
         "chokidar": "^3.5.2",
