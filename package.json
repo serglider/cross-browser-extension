@@ -11,12 +11,11 @@
         "start": "node build-scripts watch",
         "start:reload": "node build-scripts watch reload",
         "build": "node build-scripts minify",
-        "update-version": "node build-scripts/version",
-        "release": "npm run update-version",
-        "postrelease": "npm run submission",
-        "submission": "node build-scripts/submission",
-        "presubmission": "npm run build",
-        "start:firefox": "cd \"dist\" && web-ext run"
+        "release": "node build-scripts/version",
+        "postrelease": "npm run artifacts",
+        "artifacts": "web-ext build",
+        "preartifacts": "npm run build",
+        "start:firefox": "web-ext run"
     },
     "license": "MIT",
     "devDependencies": {
