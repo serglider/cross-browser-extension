@@ -1,15 +1,17 @@
 const args = process.argv.slice(2);
 const { watch } = require('chokidar');
+const extConfig = require('../web-ext-config');
 const cleanDir = require('./clean');
 const copyFiles = require('./copy');
 const createSSEServer = require('./sse-server');
 const adjustManifest = require('./manifest-handler');
 const createBuild = require('./build');
-const { DIRS_TO_COPY, DEST_DIR, SOURCE_DIR, SCRIPTS_DIR, RELOAD_DELAY } = require('./constants');
+const { DIRS_TO_COPY, SOURCE_DIR, SCRIPTS_DIR, RELOAD_DELAY } = require('./constants');
 const isDevMode = args.includes('watch');
 const minify = args.includes('minify');
 const reload = args.includes('reload');
-const esbuild = createBuild(minify);
+const DEST_DIR = extConfig.sourceDir;
+const esbuild = createBuild(minify, DEST_DIR);
 const copyItems = [...DIRS_TO_COPY];
 
 if (isDevMode) {

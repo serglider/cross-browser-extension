@@ -1,5 +1,4 @@
-import browser from 'webextension-polyfill';
+import { browserAction, tabs } from 'webextension-polyfill';
+import { HIGHLIGHT_EVENT } from './src/constants';
 
-browser.browserAction.onClicked.addListener((tab) => {
-    browser.tabs.sendMessage(tab.id, 'highlight');
-});
+browserAction.onClicked.addListener((tab) => tabs.sendMessage(tab.id, HIGHLIGHT_EVENT));

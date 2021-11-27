@@ -1,4 +1,5 @@
 import { save, restore } from './src/storage';
+import { LIST_NAME } from './src/constants';
 
 const newWordInput = document.getElementById('new-word-input');
 const addButton = document.getElementById('add-word');
@@ -7,25 +8,13 @@ let searchList = [];
 
 addButton.disabled = true;
 
-restore('searchList', []).then((list) => {
+restore(LIST_NAME, []).then((list) => {
     searchList = list;
     newWordInput.oninput = onInput;
     textsBlock.onclick = deleteText;
     addButton.onclick = addText;
     updateTextBlock();
 });
-
-function update() {
-    updateTextBlock();
-
-    save('searchList', searchList);
-
-    setTimeout(() => {
-        restore('searchList', []).then((list) => {
-            console.log(list);
-        });
-    }, 1000);
-}
 
 function updateTextBlock() {
     textsBlock.innerHTML = searchList.reduce((html, text) => {
@@ -36,9 +25,9 @@ function updateTextBlock() {
 
 function addText() {
     searchList.unshift(newWordInput.value);
-    update();
     newWordInput.value = '';
-    onInput();
+    addButton.disabled = true;
+    save(LIST_NAME, searchList).then(updateTextBlock);
 }
 
 function deleteText(e) {
@@ -46,7 +35,7 @@ function deleteText(e) {
     if (el.classList.contains('delete')) {
         const text = el.parentNode.querySelector('.content').textContent;
         searchList = searchList.filter((item) => item !== text);
-        update();
+        save(LIST_NAME, searchList).then(updateTextBlock);
     }
 }
 
