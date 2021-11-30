@@ -29,6 +29,9 @@ TODO
 #### Firefox
 `npm run start:firefox`
 
+### Releases
+TODO
+
 ### Publishing
 TODO
 
