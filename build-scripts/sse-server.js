@@ -32,6 +32,5 @@ function sendSSE(res, ee) {
     ee.on('reload', () => {
         res.write('id: ' + id + '\n');
         res.write('data: update' + '\n\n');
-        // res.end();
     });
 }

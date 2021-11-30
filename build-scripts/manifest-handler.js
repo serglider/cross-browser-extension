@@ -29,7 +29,3 @@ function handleVersion(current) {
     handleVersion.runs++;
     return digits.join('.');
 }
-
-function deepCopy(obj) {
-    return JSON.parse(JSON.stringify(obj));
-}

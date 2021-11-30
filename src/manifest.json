@@ -1,7 +1,7 @@
 {
     "name": "cross-browser-extension",
     "description": "Cross-browser extension template",
-    "version": "0.2.0",
+    "version": "0.1.0",
     "manifest_version": 2,
     "permissions": [
         "tabs",
@@ -40,5 +40,5 @@
         ],
         "persistent": false
     },
-    "version_name": "0.2.0"
+    "version_name": "0.1.0"
 }

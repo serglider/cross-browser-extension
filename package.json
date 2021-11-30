@@ -1,7 +1,7 @@
 {
     "name": "cross-browser-extension",
     "description": "Cross-browser extension template",
-    "version": "0.2.0",
+    "version": "0.1.0",
     "keywords": [],
     "author": {
         "name": "Sergey Chernykh",
@@ -15,12 +15,12 @@
     "scripts": {
         "start": "node build-scripts watch",
         "start:reload": "node build-scripts watch reload",
+        "start:firefox": "web-ext run",
         "build": "node build-scripts minify",
         "release": "node build-scripts/version",
         "postrelease": "npm run artifacts",
         "artifacts": "web-ext build",
-        "preartifacts": "npm run build",
-        "start:firefox": "web-ext run"
+        "preartifacts": "npm run build"
     },
     "devDependencies": {
         "chokidar": "^3.5.2",
