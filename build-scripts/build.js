@@ -1,19 +1,17 @@
 const path = require('path');
 const fs = require('fs');
 const esbuild = require('esbuild');
-const { SOURCE_DIR, SCRIPTS_DIR } = require('./constants');
-const scriptsSourceDir = path.resolve(process.cwd(), SOURCE_DIR, SCRIPTS_DIR);
 
-const entryPoints = fs
-    .readdirSync(scriptsSourceDir)
-    .filter((file) => path.extname(file) === '.js')
-    .map((file) => path.resolve(scriptsSourceDir, file));
-
-module.exports = function createBuild(minify, distDir) {
-    const scriptsDestDir = path.resolve(process.cwd(), distDir, SCRIPTS_DIR);
+module.exports = function createBuild({ minify, distDir, sourceDir, scriptsDir }) {
+    const scriptsSourceDir = path.resolve(process.cwd(), sourceDir, scriptsDir);
+    const entryPoints = fs
+        .readdirSync(scriptsSourceDir)
+        .filter((file) => path.extname(file) === '.js')
+        .map((file) => path.resolve(scriptsSourceDir, file));
+    const outdir = path.resolve(process.cwd(), distDir, scriptsDir);
     const esbuildConfig = {
         entryPoints,
-        outdir: scriptsDestDir,
+        outdir,
         bundle: true,
         target: ['es2018'],
         minify,

@@ -34,5 +34,18 @@
     "dependencies": {
         "@types/webextension-polyfill": "^0.8.1",
         "webextension-polyfill": "^0.8.0"
+    },
+    "webExt": {
+        "sourceDir": "dist",
+        "artifactsDir": "artifacts",
+        "build": {
+            "overwriteDest": true
+        },
+        "run": {
+            "browserConsole": true,
+            "startUrl": [
+                "about:addons"
+            ]
+        }
     }
 }

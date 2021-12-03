@@ -1,17 +1,23 @@
 const args = process.argv.slice(2);
 const { watch } = require('chokidar');
-const extConfig = require('../web-ext-config');
+
+const { DIRS_TO_COPY, DEST_DIR, SOURCE_DIR, SCRIPTS_DIR, RELOAD_DELAY } = require('../config');
 const cleanDir = require('./clean');
 const copyFiles = require('./copy');
 const createSSEServer = require('./sse-server');
 const adjustManifest = require('./manifest-handler');
 const createBuild = require('./build');
-const { DIRS_TO_COPY, SOURCE_DIR, SCRIPTS_DIR, RELOAD_DELAY } = require('./constants');
+
 const isDevMode = args.includes('watch');
 const minify = args.includes('minify');
 const reload = args.includes('reload');
-const DEST_DIR = extConfig.sourceDir;
-const esbuild = createBuild(minify, DEST_DIR);
+const esbuild = createBuild({
+    minify,
+    distDir: DEST_DIR,
+    sourceDir: SOURCE_DIR,
+    scriptsDir: SCRIPTS_DIR,
+});
+
 const copyItems = [...DIRS_TO_COPY];
 
 if (isDevMode) {
@@ -23,13 +29,8 @@ if (isDevMode) {
 }
 
 make()
-    .then(() => {
-        console.log('done');
-        watchFiles();
-    })
-    .catch((e) => {
-        console.log(e);
-    });
+    .then(watchFiles)
+    .catch((e) => console.log(e));
 
 function make() {
     return cleanDir(DEST_DIR)
@@ -50,6 +51,7 @@ function copy() {
 
 function watchFiles() {
     if (!isDevMode) {
+        console.log('----> build completed');
         return;
     }
 
@@ -58,7 +60,7 @@ function watchFiles() {
     });
 
     const ee = createSSEServer();
-
+    console.log('----> watching files');
     watcher.on('change', (path) => {
         const task = path.includes(SCRIPTS_DIR) ? build : copy;
         task()
