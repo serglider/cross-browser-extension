@@ -7,11 +7,19 @@ How should I install my extension locally? How to publish my extension? What lib
 
 Please be aware that this template uses `Manifest V2`. Read [here](https://developer.chrome.com/docs/extensions/mv3/mv2-sunset/) and [here](https://blog.mozilla.org/addons/2021/05/27/manifest-v3-update/) to make your choices.
 
+https://developer.apple.com/documentation/safariservices/safari_web_extensions
+
 ### Getting started
 1. Hit the **Use this template** button on the upper right and create your repository.
 2. Clone newly created repository.
 3. Install dependencies: `npm i`.
 4. See the **Configuration** and **Development** sections.
+
+Rather than steps 1 and 2, you could use:
+```bash
+npx degit serglider/cross-browser-extension <your-project-dir>
+```
+In this case, you must initialize Git yourself. If you're using a platform other than Github, this method might be more convenient.
 
 ### Configuration
 There are two places to adjust the project configuration: [config.js](config.js) file and the `webExt` section in [package.json](package.json). TODO: config props explanation.
